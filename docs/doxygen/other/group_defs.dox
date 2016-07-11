@@ -1,0 +1,7 @@
+/*!
+ * \defgroup block GNU Radio DATAPRINTER C++ Signal Processing Blocks
+ * \brief All C++ blocks that can be used from the DATAPRINTER GNU Radio
+ *        module are listed here or in the subcategories below.
+ *
+ */
+

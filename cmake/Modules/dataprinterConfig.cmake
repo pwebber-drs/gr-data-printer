@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_DATAPRINTER dataprinter)
+
+FIND_PATH(
+    DATAPRINTER_INCLUDE_DIRS
+    NAMES dataprinter/api.h
+    HINTS $ENV{DATAPRINTER_DIR}/include
+        ${PC_DATAPRINTER_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    DATAPRINTER_LIBRARIES
+    NAMES gnuradio-dataprinter
+    HINTS $ENV{DATAPRINTER_DIR}/lib
+        ${PC_DATAPRINTER_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(DATAPRINTER DEFAULT_MSG DATAPRINTER_LIBRARIES DATAPRINTER_INCLUDE_DIRS)
+MARK_AS_ADVANCED(DATAPRINTER_LIBRARIES DATAPRINTER_INCLUDE_DIRS)
+
